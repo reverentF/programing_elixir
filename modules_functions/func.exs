@@ -12,13 +12,13 @@ defmodule Func do
         _guess(guess_value, actual, s..e)
     end
 
-    def _guess(guess_value, actual, s..e) when guess_value == actual do
+    defp _guess(guess_value, actual, s..e) when guess_value == actual do
         IO.puts(guess_value)
     end
-    def _guess(guess_value, actual, s..e) when guess_value > actual do
+    defp _guess(guess_value, actual, s..e) when guess_value > actual do
         guess(actual, s..(guess_value-1))
     end
-    def _guess(guess_value, actual, s..e) when guess_value < actual do
+    defp _guess(guess_value, actual, s..e) when guess_value < actual do
         guess(actual, (guess_value+1)..e)
     end
 
