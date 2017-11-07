@@ -28,4 +28,12 @@ defmodule MyList do
     # ListsAndRecursion-4
     def span(to, to), do: [to]
     def span(from, to) when from < to, do: [from] ++ span(from+1, to)
+    
+    # ListsAndRecursion-7
+    def span_prime(from \\ 2, to) do
+        with list = span(2, to)
+        do
+            for x <- span(from, to), Enum.all?(list, &(&1 >= x or rem(x,&1) != 0)), do: x
+        end
+    end
 end
