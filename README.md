@@ -1,19 +1,15 @@
-# Elixir
+# プログラミングElixir
 
-**TODO: Add description**
+## フォルダ構成
+- memos : 得られた知見とかちょっとしたメモのまとめ
 
-## Installation
+### 演習問題解答
+章単位ではなく演習問題名でまとめてある
 
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed
-by adding `elixir` to your list of dependencies in `mix.exs`:
-
-```elixir
-def deps do
-  [{:elixir, "~> 0.1.0"}]
-end
-```
-
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at [https://hexdocs.pm/elixir](https://hexdocs.pm/elixir).
-
+- functions : 5章, 無名関数ほか
+- modules_functions : 6章
+- lists_recursion : 7 - 10章
+- strings_binaries : 11章, 文字列とバイナリ
+- control_flow : 12章, 制御フロー
+- issues : 13章, mixの扱い
+- multi_process : 14章, プロセス
