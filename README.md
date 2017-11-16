@@ -1,6 +1,10 @@
 # プログラミングElixir
 
+やっていく
+
 ## フォルダ構成
+
+### 知見
 - memos : 得られた知見とかちょっとしたメモのまとめ
 
 ### 演習問題解答
@@ -13,3 +17,4 @@
 - control_flow : 12章, 制御フロー
 - issues : 13章, mixの扱い
 - multi_process : 14章, プロセス
+- stack : 16章-17章, GenServerで実装したStack / GenserverとSupervisor
