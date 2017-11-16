@@ -1,4 +1,4 @@
-# OTP
+# OTP : サーバー
 
 ## 概要
 - OTP : Open Telecom Platform
