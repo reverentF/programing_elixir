@@ -2,9 +2,12 @@
 defmodule Stack.Server do
   use GenServer
 
-  # OTP-Servers-4
-  def start_link(initial_stack) do
-    GenServer.start_link(__MODULE__, initial_stack, name: __MODULE__)
+
+  #####
+  # API
+
+  def start_link(stash_pid) do
+    GenServer.start_link(__MODULE__, stash_pid, name: __MODULE__)
   end
 
   def pop do
@@ -15,24 +18,36 @@ defmodule Stack.Server do
     GenServer.cast(__MODULE__, {:push, value})    
   end
 
-  # OTP-Servers-5
-  def terminate(reason, state) do
-    IO.puts("Server terminated. reason: #{reason}")
-    IO.puts("                   state: #{state}")
+  #####
+  # Callback functions of GenServer
+
+  def init(stash_pid) do
+    stack_list = Stack.Stash.get_value stash_pid
+    IO.inspect(stack_list)
+    {:ok, {stack_list, stash_pid}}
   end
 
-  def handle_call(:pop, from, stack_list = []) do
-    {:stop, "pop: stack is empty.", stack_list}
-  end
+  # def handle_call(:pop, from, stack_list = []) do
+  #   {:stop, "pop: stack is empty.", stack_list}
+  # end
 
-  # OTP-Servers-1
-  def handle_call(:pop, from, stack_list = [head|tail]) do
-    {:reply, head, tail}
+  def handle_call(:pop, _from, {stack_list, stash_pid}) do
+    [head|tail] = stack_list
+    {:reply, head, {tail, stash_pid}}
   end
   
   # OTP-Servers-2
-  def handle_cast({:push, value}, stack_list) do
-    {:noreply, [value] ++ stack_list}
+  def handle_cast({:push, value}, {stack_list, stash_pid}) do
+    new_stack_list = [value] ++ stack_list
+    {:noreply, {new_stack_list, stash_pid}}
+  end
+
+  def terminate(reason, state) do
+    ## OTP-Servers-5
+    # IO.puts("Server terminated. reason: #{reason}")
+    # IO.puts("                   state: #{state}")
+    {stack_list, stash_pid} = state
+    Stack.Stash.save_value stash_pid, stack_list
   end
   
 end
