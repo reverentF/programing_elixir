@@ -23,7 +23,6 @@ defmodule Stack.Server do
 
   def init(stash_pid) do
     stack_list = Stack.Stash.get_value stash_pid
-    IO.inspect(stack_list)
     {:ok, {stack_list, stash_pid}}
   end
 

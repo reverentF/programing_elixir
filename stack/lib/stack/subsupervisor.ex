@@ -2,7 +2,7 @@ defmodule Stack.SubSupervisor do
   use Supervisor
 
   def start_link(stash_pid) do
-    IO.puts("SubSupervisor start.")
+    # IO.puts("SubSupervisor start.")
     {:ok, _pid} = Supervisor.start_link(__MODULE__, stash_pid)
   end
 

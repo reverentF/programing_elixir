@@ -5,7 +5,7 @@ defmodule Stack.Application do
 
   use Application
 
-  def start(_type, _args) do
+  def start(_type, initial_stack) do
     ## With Single SuperVisor
     # import Supervisor.Spec, warn: false
 
@@ -19,6 +19,6 @@ defmodule Stack.Application do
     # Supervisor.start_link(children, opts)
 
     ## With Stash
-    {:ok, _pid} = Stack.Supervisor.start_link(["initial", "value"])
+    {:ok, _pid} = Stack.Supervisor.start_link(initial_stack)
   end
 end
