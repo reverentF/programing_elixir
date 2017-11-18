@@ -1,0 +1,7 @@
+%{"bbmustache": {:hex, :bbmustache, "1.0.4", "7ba94f971c5afd7b6617918a4bb74705e36cab36eb84b19b6a1b7ee06427aa38", [], [], "hexpm"},
+  "cf": {:hex, :cf, "0.2.2", "7f2913fff90abcabd0f489896cfeb0b0674f6c8df6c10b17a83175448029896c", [], [], "hexpm"},
+  "erlware_commons": {:hex, :erlware_commons, "1.0.4", "8f215709ccb8a99bc0436405cd78a8a92b84ad08969c2b926e239cc3b08ac4dc", [], [{:cf, "0.2.2", [hex: :cf, repo: "hexpm", optional: false]}], "hexpm"},
+  "exrm": {:hex, :exrm, "1.0.8", "5aa8990cdfe300282828b02cefdc339e235f7916388ce99f9a1f926a9271a45d", [], [{:relx, "~> 3.5", [hex: :relx, repo: "hexpm", optional: false]}], "hexpm"},
+  "getopt": {:hex, :getopt, "1.0.1", "c73a9fa687b217f2ff79f68a3b637711bb1936e712b521d8ce466b29cbf7808a", [], [], "hexpm"},
+  "providers": {:hex, :providers, "1.7.0", "bbf730563914328ec2511d205e6477a94831db7297de313b3872a2b26c562eab", [], [{:getopt, "1.0.1", [hex: :getopt, repo: "hexpm", optional: false]}], "hexpm"},
+  "relx": {:hex, :relx, "3.24.2", "4bc77f30385a208bf7a4b1d0e5cb9098d1fd6794cde8e3014b7d1bafcf0af47f", [], [{:bbmustache, "1.0.4", [hex: :bbmustache, repo: "hexpm", optional: false]}, {:cf, "0.2.2", [hex: :cf, repo: "hexpm", optional: false]}, {:erlware_commons, "1.0.4", [hex: :erlware_commons, repo: "hexpm", optional: false]}, {:getopt, "1.0.1", [hex: :getopt, repo: "hexpm", optional: false]}, {:providers, "1.7.0", [hex: :providers, repo: "hexpm", optional: false]}], "hexpm"}}

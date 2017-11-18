@@ -72,3 +72,85 @@ end
 ### EXRM
 - EXRM : Elixirのリリースマネージャ
     - Erlangのrelxパッケージの上に実装
+
+mix.exs
+```elixir
+defp deps do
+  [
+      {:exrm, "~> 1.0.0-rc7"}
+  ]
+end
+```
+
+#### バージョン管理
+- アプリケーションのバージョンと、サーバーの状態のバージョンを個別に管理する
+
+##### アプリケーションのバージョン
+mix.exs
+```elixir
+  def project do
+    [app: :stack,
+     version: "0.1.0", # ここ
+     elixir: "~> 1.4",
+     ...
+  end
+```
+##### サーバーの状態のバージョン
+server.ex
+```elixir
+defmodule Stack.Server do
+  use GenServer
+
+  @vsn "0"
+```
+
+ホットデプロイ前後の状態の以降には`code_change`関数を使う
+
+- server.ex
+```elixir
+def code_change(from_version, state, extra) do
+  ...
+end
+```
+- `extra`は何だか不明
+
+```elixir
+def code_change("0", old_state = {stack_list, stash_pid}, _extra) do
+  new_state = %{stack_list: stack_list,
+                stash_pid: stash_pid}
+  {:ok, new_state}
+end
+```
+
+#### ホットデプロイ
+
+- リリースされたアプリをコンソール上で動かす
+```sh
+$ cd ~/deploy
+$ ./bin/appname console
+```
+
+- アプリを修正
+- mix.exsのバージョンを修正
+- 新しいバージョンのリリース
+
+```sh
+$ mix compile
+$ mix release
+```
+
+`./rel/stack/releases/(version_name)/`以下に生成されたtar.gzファイルを実行環境にコピー
+
+```sh
+$ cp rel/stack/releases/version/appname_tar.gz ~/deploy/releases/version
+$ cd ~/deploy
+```
+
+ホットデプロイ用のコマンドを叩く
+
+```sh
+$ ./bin/appname upgrade version
+```
+
+コンソールを止めなくてもアプリがバージョンアップされる:clap::clap::clap:
+

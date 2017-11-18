@@ -2,6 +2,7 @@
 defmodule Stack.Server do
   use GenServer
 
+  @vsn "0"
 
   #####
   # API
@@ -26,13 +27,13 @@ defmodule Stack.Server do
     {:ok, {stack_list, stash_pid}}
   end
 
-  # def handle_call(:pop, from, stack_list = []) do
-  #   {:stop, "pop: stack is empty.", stack_list}
+  # def handle_call(:pop, _from, {stack_list = [], stash_pid}) do
+  #   {:reply, "pop: stack is empty.", {stack_list, stash_pid}}
   # end
 
   def handle_call(:pop, _from, {stack_list, stash_pid}) do
     [head|tail] = stack_list
-    {:reply, head, {tail, stash_pid}}
+    {:reply, "stack: #{head}", {tail, stash_pid}}
   end
   
   # OTP-Servers-2
