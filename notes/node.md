@@ -1,7 +1,7 @@
 # ノード
 
-- Beam : Erlang VMの一種、今主流のやつ
-    - 単なるインタプリタではなく、スケジューリング他色々やってくれる
+- Beam : Erlang VMの一種、今主流のやつ
+    - 単なるインタプリタではなく、スケジューリング他色々やってくれる
     - 他のノードと接続できる
         - 同マシン上, LAN, WAN上問わず接続可能
 
@@ -35,14 +35,14 @@ Node.connect :"node_name@machine_name"
 Node.list
 ```
 - 接続したノードが一覧
-- 接続された側も既にリストにある→双方向
-- 接続済みのノードグループに接続すると全部繋がる
-    - `test1@machine` <-> `test2@machine` が接続済み
+- 接続された側も既にリストにある→双方向
+- 接続済みのノードグループに接続すると全部繋がる
+    - `test1@machine` <-> `test2@machine` が接続済み
     - `test1@machine`と`test3@machine`を繋ぐ
     ```elixir
     iex(test1@machine) > Node.conenct :"test3@machine"
     ```
-    - 全部繋がる
+    - 全部繋がる
     ```elixir
     iex(test1@machine)3> Node.list
     [:test2@machine, :test3@machine]
@@ -59,10 +59,10 @@ Node.spawn(node_name, function)
 
 - `#PID<xxxx.xx.x>`
     - ノード番号.プロセス番号.プロセス番号(?)
-        - プロセス番号下位, 上位ビットらしい
+        - プロセス番号下位, 上位ビットらしい
         - ノード番号0 : 自分
 
-## ノード間接続のセキュリティ
+## ノード間接続のセキュリティ
 - クッキーを使って接続権限のチェックを行う
 ```sh
 $ iex --sname test --cookie test_cookie
@@ -92,5 +92,5 @@ $ iex --sname test --cookie test_cookie
 
 ## I/O
 - Erlang VMにおける入出力はI/Oサーバを介して行う
-- I/Oサーバの実態はプロセスなのでPIDを持つ
-- 他ノードのI/Oサーバにももちろん接続可能
+- I/Oサーバの実態はプロセスなのでPIDを持つ
+- 他ノードのI/Oサーバにももちろん接続可能

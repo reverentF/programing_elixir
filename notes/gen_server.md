@@ -26,7 +26,7 @@ use Genserver
 ```elixir
   def handle_call(request, from, state) do
     ...
-    {:reply, reply_body, next_state}
+    {:reply, reply_ody, next_state}
   end
 ```
 - `request` : クライアントが渡した最初の引数
@@ -38,10 +38,10 @@ use Genserver
     - OTPにタプルを返す
 
     ```elixir
-    {:reply, reply_body, next_state}指示
+    {:reply, reply_ody, next_state}指示
     - `next_state` : サーバーの次の状態(次の`handle_call`)
     ```
-    - `:reply` : OTPに2つ目の変数(`reply_body`)を返すよう指示
+    - `:reply` : OTPに2つ目の変数(`reply_ody`)を返すよう指示
     - `next_state` : サーバーの次の状態(次の`handle_call()`の呼び出しの最後の引数)
 
 #### サーバーの起動
@@ -57,7 +57,7 @@ use Genserver
 - 例
     1. `:trace` : デバッグトレース
     ```elixir
-    iex(1)> {:ok, pid} = GenServer.start_link(Stack.Server, [5, "cat", 9], [debug: [:trace]])
+    iex(1)> {:ok, pid} = GenServer.start_link(Stack.Server, [5, "cat", 9], [deug: [:trace]])
     {:ok, #PID<0.124.0>}
     iex(2)> GenServer.call(pid, :pop)
     *DBG* <0.124.0> got call pop from <0.122.0>
@@ -86,7 +86,7 @@ use Genserver
 ```elixir
 GenServer.call(pid, :request)
 ```
-- `GenServer.start_link()`で得たサーバプロセスのpidにメッセージを投げる
+- `GenServer.start_link()`で得たサーバプロセスのpidにメッセージを投げる
 - `:request` : サーバのアクションを指定するのに使ったりする
     - 2つ以上の引数が要る場合にはタプルを投げる
     ```elixir
@@ -104,7 +104,7 @@ GenServer.call(pid, :request)
 ```elixir
   def handle_cast(request, state) do
     ...
-    {:noreply, next_state}
+    {:noreply, next_state}
   end
 ```
 
@@ -128,11 +128,11 @@ iex(2)> :sys.get_status(pid)
     {'Logged events', []}], data: [{'State', [5, "cat", 9]}]]]}
 ```
 
-- サーバーに`format_status()`を定義することでステータスメッセージをフォーマット可能
+- サーバーに`format_status()`を定義することでステータスメッセージをフォーマット可能
 
 ### サーバモニタリングツール
 ```elixir
-iex > :observer.start
+iex > :oserver.start
 ```
 GUIのモニタリングツールが起動する :clap:
 
@@ -142,10 +142,10 @@ GUIのモニタリングツールが起動する :clap:
     - `start_arguments` : `handle_call()`の第2引数
 - `handle_call(request, from, state)`
     - レスポンス
-        - `{:reply, result, new_state [, :hibernate | timeout]}`
-        - `{:noreply, new_state [, :hibernate | timeout]}`
+        - `{:reply, result, new_state [, :hiernate | timeout]}`
+        - `{:noreply, new_state [, :hiernate | timeout]}`
         - `{:stop, reason, [:reply ,] new_state}`
-            - `:hibernate` : サーバの状態をメモリから退避(メモリの節約)
+            - `:hiernate` : サーバの状態をメモリから退避(メモリの節約)
 - `handle_cast(request, state)`
     - レスポンス
         `:noreply`, `:stop`

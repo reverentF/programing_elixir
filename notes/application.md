@@ -9,7 +9,7 @@
 ## アプリケーション仕様ファイル
 - コンパイルすると`appname.app`ファイルが作成される
     - `./_build/`以下を探すとあった
-- アプリケーションの実行に必要な情報がここに保存されるらしい
+- アプリケーションの実行に必要な情報がここに保存されるらしい
 
 ## OTPアプリケーションの作成
 
@@ -32,9 +32,9 @@ end
 ```
 - アプリケーションのメインエントリポイントのモジュールを指定
 - OTPはこのモジュールが`start`関数を実装していると想定する
-- start関数の引数も指定(この例だと空のリスト)
+- start関数の引数も指定(この例だと空のリスト)
 - start関数の実体は`lib/app_name/application.ex`にある
-- ライブラリの場合はstart関数で初期化をしたりする
+- ライブラリの場合はstart関数で初期化をしたりする
 
 #### `registerd:` オプション
 - アプリケーションが登録する予定の名前を列挙
@@ -61,8 +61,8 @@ end
 - `Application.get_env()`でどこのコードからでも参照できる
 - 初期値はこれで指定するといいよね
 
-## リリース
-Erlangには堅牢なリリース管理システムもある:clap:
+## リリース
+Erlangには堅牢なリリース管理システムもある:clap:
 
 ##### 用語
 - リリース(release) : アプリケーション実行に必要なもの(依存関係や設定)を束ねたもの
@@ -139,7 +139,7 @@ $ mix compile
 $ mix release
 ```
 
-`./rel/stack/releases/(version_name)/`以下に生成されたtar.gzファイルを実行環境にコピー
+`./rel/stack/releases/(version_name)/`以下に生成されたtar.gzファイルを実行環境にコピー
 
 ```sh
 $ cp rel/stack/releases/version/appname_tar.gz ~/deploy/releases/version

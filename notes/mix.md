@@ -52,7 +52,7 @@ $ iex -S mix
 ## ライブラリ
 ### 組み込みのライブラリ
 - Elixirのライブラリ
-- Erlangのライブラリ : [ここ](http://erlang.org/doc/applications.html)
+- Erlangのライブラリ : [ここ](http://erlang.org/doc/applications.html)
 ### 外部ライブラリ
 - パッケージマネージャ : hex
 - http://hex.pm
@@ -115,7 +115,7 @@ $ mix escript.build
   ```elixir
   config :logger, compile_time_purge_level: :info
   ```
-  - Logger.debug "文字列 #{func()}" → debugレベルが無視されていたとしても毎回`func()`呼ばれる
+  - Logger.debug "文字列 #{func()}" → debugレベルが無視されていたとしても毎回`func()`呼ばれる
   - アリティ0の関数も引数に取れる　→　必要時だけ文字列に埋め込み
   ```elixir
   Logger.debug fn -> "文字列 #{func()}" end
